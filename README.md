@@ -1,6 +1,6 @@
 # jobi
 
-Tiny logging utility with events and streams.
+Tiny logging utility with events, streams, and sane defaults.
 
 ```js
 const logger = require('jobi');
