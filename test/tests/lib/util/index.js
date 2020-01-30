@@ -13,5 +13,5 @@ describe( path, () => {
 
     const parseLevel = getModule('lib/util/parse-level');
     expect( util.parseLevel ).to.deep.equal( parseLevel );
-  } );
-} );
+  });
+});

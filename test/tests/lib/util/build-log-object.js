@@ -21,7 +21,7 @@ describe( path, () => {
       timestamp: this.date.toISOString(),
       level
     });
-  } );
+  });
 
   it( 'should build a simple message log', () => {
     const message = 'Simple log message';
@@ -31,7 +31,7 @@ describe( path, () => {
       timestamp: this.date.toISOString(),
       level
     });
-  } );
+  });
 
   it( 'use the message as a template to format interpolation values', () => {
     const message = 'Message: %s %f';
@@ -43,7 +43,7 @@ describe( path, () => {
       timestamp: this.date.toISOString(),
       level
     });
-  } );
+  });
 
   it( 'should serialize an error stack', () => {
     const error = new Error('Test error');
@@ -57,7 +57,7 @@ describe( path, () => {
       timestamp: this.date.toISOString(),
       level
     });
-  } );
+  });
 
   it( 'should serialize an error stack and properties', () => {
     const error = new Error('Test error');
@@ -75,7 +75,7 @@ describe( path, () => {
 
     expect( log.message ).to.include('This is the deep message');
     expect( log.message ).to.include('PropNumberOne');
-  } );
+  });
 
   it( 'should serialize an error subclass', () => {
     class ErrorSubclass extends Error {}
@@ -94,5 +94,5 @@ describe( path, () => {
 
     expect( log.message ).to.include('This is the deep message');
     expect( log.message ).to.include('PropNumberOne');
-  } );
-} );
+  });
+});

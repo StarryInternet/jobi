@@ -19,10 +19,10 @@ describe( path, () => {
       expect( fn( log ) ).to.be.a('string');
       expect( fn.length ).to.equal( 1 );
     }
-  } );
+  });
 
   it( 'should contain json and pretty', () => {
     expect( formats.json ).to.exist;
     expect( formats.pretty ).to.exist;
-  } );
-} );
+  });
+});

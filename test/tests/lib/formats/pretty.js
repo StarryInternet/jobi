@@ -14,7 +14,7 @@ describe( path, () => {
     expect( formatPretty( log ) ).to.equal(
       `[${ log.timestamp }] ${ log.level.toUpperCase() }: ${ log.message }`
     );
-  } );
+  });
 
   it( 'should output an error stack an Error', () => {
     const error = new Error('test');
@@ -29,7 +29,7 @@ describe( path, () => {
       `[${ log.timestamp }] ${ log.level.toUpperCase() }: ${ log.message }\n` +
       `${ log.stack }`
     );
-  } );
+  });
 
   it( 'should output an empty message if it is undefined', () => {
     const log = {
@@ -40,7 +40,7 @@ describe( path, () => {
     expect( formatPretty( log ) ).to.equal(
       `[${ log.timestamp }] ${ log.level.toUpperCase() }: `
     );
-  } );
+  });
 
   it( 'should output extra props at the end', () => {
     const log = {
@@ -57,5 +57,5 @@ describe( path, () => {
       `[${ log.timestamp }] ${ log.level.toUpperCase() }: ${ log.message }\n` +
       extra
     );
-  } );
-} );
+  });
+});

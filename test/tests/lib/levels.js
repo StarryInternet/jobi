@@ -11,7 +11,7 @@ describe( path, () => {
       expect( level ).to.be.a('string');
       expect( value ).to.be.a('number');
     }
-  } );
+  });
 
   it( 'should export all expected levels', () => {
     expect( levels.trace ).to.equal( 0 );
@@ -21,5 +21,5 @@ describe( path, () => {
     expect( levels.error ).to.equal( 4 );
     expect( levels.critical ).to.equal( 5 );
     expect( levels.off ).to.equal( Infinity );
-  } );
-} );
+  });
+});
