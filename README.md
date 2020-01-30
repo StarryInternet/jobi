@@ -1,14 +1,17 @@
 # jobi
 
-Jobi is a fictional tree from Thomas the Tank Engine that is _logged_. That's all folks.
+Tiny logging utility with events and streams.
 
 ```js
 const logger = require('jobi');
 logger.warn(`Soon we'll be jobiing our logs 🤯`);
 ```
 
-![Jumping Jobi Wood](./assets/JumpingJobiWood.jpg)
+## Lore
 
+Jobi is a fictional tree from Thomas the Tank Engine that is _logged_. That's all folks.
+
+![Jumping Jobi Wood](./assets/JumpingJobiWood.jpg)
 
 ## Features
 
