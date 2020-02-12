@@ -3,7 +3,7 @@
 Tiny logging utility with events, streams, and sane defaults.
 
 ```js
-const logger = require('jobi');
+const logger = require('@starryinternet/jobi');
 logger.warn(`Soon we'll be jobiing our logs 🤯`);
 ```
 
@@ -132,7 +132,7 @@ via HTTP, to a database, etc.
 ##### Logging
 
 ```js
-const logger = require('jobi');
+const logger = require('@starryinternet/jobi');
 
 logger.critical( 'this is a %s with some %s', 'log', 'formatting' );
 ```
@@ -140,7 +140,7 @@ logger.critical( 'this is a %s with some %s', 'log', 'formatting' );
 ##### Event binding
 
 ```js
-const logger = require('jobi');
+const logger = require('@starryinternet/jobi');
 
 logger.on( 'critical', msg => slack.notify( msg ) );
 logger.on( 'error', (msg, log) => {
@@ -152,7 +152,7 @@ logger.on( 'error', (msg, log) => {
 ##### Streaming
 
 ```js
-const logger = require('jobi');
+const logger = require('@starryinternet/jobi');
 const fs     = require('fs');
 
 const file = fs.createWriteStream('./log.txt');
@@ -165,7 +165,7 @@ logger.info('blah blah blah');
 ##### Custom Jobi Instance
 
 ```js
-const { Jobi } = require('jobi')
+const { Jobi } = require('@starryinternet/jobi')
 const format = log => '>> ' + log.message || 'No message';
 
 const logger = new Jobi({ format });

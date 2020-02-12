@@ -1,6 +1,6 @@
 {
-  "name": "jobi",
-  "version": "1.0.0",
+  "name": "@starryinternet/jobi",
+  "version": "1.0.1",
   "description": "Tiny logging utility with events and streams",
   "keywords": [
     "logging",
@@ -27,25 +27,16 @@
     "test": "npm run lint && npm run nyc"
   },
   "devDependencies": {
+    "@starryinternet/eslint-config-starry": "9.0.2",
+    "@starryinternet/nyc-config-starry": "1.0.0",
+    "eslint-plugin-mocha": "6.2.2",
     "chai": "4.2.0",
     "eslint": "6.8.0",
-    "eslint-config-starry": "9.0.2",
-    "eslint-plugin-mocha": "6.2.2",
     "mocha": "7.0.1",
     "nyc": "15.0.0",
     "sinon": "8.1.1"
   },
   "nyc": {
-    "check-coverage": true,
-    "per-file": true,
-    "lines": 100,
-    "statements": 100,
-    "functions": 100,
-    "branches": 100,
-    "all": true,
-    "reporter": [
-      "text",
-      "html"
-    ]
+    "extends": "@starryinternet/nyc-config-starry"
   }
 }
