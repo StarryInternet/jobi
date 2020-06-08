@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/formats/pretty';
 const formatPretty = getModule( path );
 

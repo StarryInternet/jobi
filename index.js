@@ -1,5 +1,3 @@
-'use strict';
-
 const Jobi = require('./lib/jobi');
 
 // Set the default global level and format

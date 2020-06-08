@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/formats';
 const formats = getModule( path );
 
