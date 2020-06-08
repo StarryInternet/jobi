@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/util/parse-format';
 const parseFormat = getModule( path );
 const formats = getModule('lib/formats');

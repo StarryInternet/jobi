@@ -1,5 +1,3 @@
-'use strict';
-
 const path = '../..';
 const Jobi = require('../../lib/jobi');
 const formats = getModule('lib/formats');

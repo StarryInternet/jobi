@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/formats/json';
 const formatJson = getModule( path );
 

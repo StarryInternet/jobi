@@ -1,5 +1,5 @@
 {
-  "extends": "starry",
+  "extends": "@starryinternet/starry",
   "parserOptions": {
       "ecmaVersion": 2018
   }

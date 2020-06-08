@@ -1,5 +1,3 @@
-'use strict';
-
 const util = require('util');
 const path = 'lib/util/build-log-object';
 const buildLogObject = getModule( path );

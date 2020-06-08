@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/util/parse-level';
 const parseLevel = getModule( path );
 const levels = getModule('lib/levels');

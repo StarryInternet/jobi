@@ -1,5 +1,3 @@
-'use strict';
-
 const path = 'lib/levels';
 const levels = getModule( path );
 
