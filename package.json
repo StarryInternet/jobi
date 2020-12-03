@@ -20,7 +20,9 @@
     "url": "https://github.com/StarryInternet/jobi/issues"
   },
   "homepage": "https://github.com/StarryInternet/jobi",
-  "engines" : { "node" : ">=8.3.0" },
+  "engines": {
+    "node": ">=8.3.0"
+  },
   "scripts": {
     "lint": "eslint .",
     "mocha": "NODE_ENV=test mocha test/tests --require test/globals.js  --recursive --exit",
@@ -28,14 +30,14 @@
     "test": "npm run lint && npm run nyc"
   },
   "devDependencies": {
-    "@starryinternet/eslint-config-starry": "9.2.0",
+    "@starryinternet/eslint-config-starry": "10.0.0",
     "@starryinternet/nyc-config-starry": "1.0.0",
-    "eslint-plugin-mocha": "7.0.1",
+    "eslint-plugin-mocha": "8.0.0",
     "chai": "4.2.0",
-    "eslint": "7.2.0",
-    "mocha": "7.2.0",
+    "eslint": "7.14.0",
+    "mocha": "8.2.1",
     "nyc": "15.1.0",
-    "sinon": "9.0.2"
+    "sinon": "9.2.1"
   },
   "nyc": {
     "extends": "@starryinternet/nyc-config-starry"

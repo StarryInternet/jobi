@@ -304,5 +304,39 @@ describe( path, () => {
 
       logger[ logWithFormat ]( 'debug', formats.json, ...args );
     });
+
+    it( 'should not emit level event if level is insufficient', () => {
+      const logger = new Jobi( this.opts );
+      Jobi.level = 'error';
+      Jobi.format = 'json';
+
+      const args = [ 1, 'two', null, { four: 5, six: [ 7, '8' ] } ];
+
+      let emitted = false;
+      logger.once( 'info', () => {
+        emitted = true;
+      });
+
+      logger[ logWithFormat ]( 'info', formats.json, ...args );
+      assert.isFalse( emitted );
+    });
+
+    it( 'should emit "log" if listener even if level is insufficient', done => {
+      const logger = new Jobi( this.opts );
+      Jobi.level = 'error';
+      Jobi.format = 'json';
+
+      const args = [ 1, 'two', null, { four: 5, six: [ 7, '8' ] } ];
+      const expectedLog = buildLogObject( 'info', args );
+
+      logger.once( 'log', ( level, formatted, log ) => {
+        expect( level ).to.equal('info');
+        expect( log ).to.deep.equal( expectedLog );
+        expect( formatted ).to.equal( logger.format( expectedLog ) );
+        done();
+      });
+
+      logger[ logWithFormat ]( 'info', formats.json, ...args );
+    });
   });
 });

@@ -108,12 +108,10 @@ Possible formats:
 
 ### Events
 
-Each log level will emit an event of the same name *if the log level is high enough*.
-For example, `logger.critical('foo');` will emit a `'critical'` event whose
-callback argument will be of type `Log`.
+Each log level will emit an event of the same name _if the log level is high enough_. For example, `logger.critical('foo');` will emit a `'critical'` event whose
+callback argument will be of type `Log`. This way, applications can hook in to the logging system and respond however they want (post to Slack, send to a logging service, etc.).
 
-This way, applications can hook in to the logging system and respond however
-they want (post to Slack, send to a logging service, etc.).
+In addition, emit a `log` event when any log is received *if there is a listener to the event*. This event will be passed with args `level`, `formattedLog`, and `rawLog`. Code can hook into these events to forward logs or ensure that logs are being added even if it is not being written to `stdout`/`stderr`.
 
 ### Streaming
 
