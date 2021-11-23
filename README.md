@@ -56,8 +56,12 @@ Get the current log format **OR** set the current log format for this `Jobi` ins
 `Log`:
 - `timestamp` (string)
 - `level` (string)
-- `message` (string | undefined)
+- `message` (string | undefined) *prefix is prepended to `message`*
 
+#### `logger.prefix` (string)
+
+Get the current log prefix of a Jobi instance. Prefixes can only be set in the
+constructor.
 
 #### `Jobi.level` (string)
 
@@ -71,9 +75,9 @@ Get the shared log format **OR** set the shared log format.
 
 ##### `opts`
 - `[format]` (string | (Log => string))
+- `[prefix]` (string)
 - `[stdout]` (stream.Writable)
 - `[stderr]` (stream.Writable)
-
 
 ##### Example
 ```js
@@ -105,6 +109,13 @@ since it automatically includes the other levels.
 Possible formats:
 - `pretty`
 - `json`
+
+#### Log Prefix
+
+A log prefix that will be prepended to the `message` property of a log object
+and can be set by passing the `prefix` prop to the Jobi constructor. Prefixes
+are added to all logs of Jobi instance. For different prefixes create separate
+instances.
 
 ### Events
 
@@ -144,7 +155,7 @@ logger.on( 'critical', msg => slack.notify( msg ) );
 logger.on( 'error', (msg, log) => {
   slack.notify(msg);
   console.error(log.stack);
-})
+});
 ```
 
 ##### Streaming
@@ -160,12 +171,22 @@ logger.stderr = file;
 logger.info('blah blah blah');
 ```
 
-##### Custom Jobi Instance
+##### Custom Log Format
 
 ```js
-const { Jobi } = require('@starryinternet/jobi')
+const { Jobi } = require('@starryinternet/jobi');
 const format = log => '>> ' + log.message || 'No message';
 
 const logger = new Jobi({ format });
 logger.info('Hello world'); // ">> Hello world"
+logger.info(); // ">> No message"
+```
+
+##### Custom Log Prefix
+```js
+const { Jobi } = require('@starryinternet/jobi');
+const prefix = 'logger: ';
+
+const logger = new Jobi({ prefix });
+logger.info('Hello world'); // "[2021-11-29T15:35:59.859Z] INFO: jobi: log message"
 ```
