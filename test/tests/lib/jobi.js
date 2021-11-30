@@ -1,10 +1,11 @@
 const fs           = require('fs');
 const { Writable } = require('stream');
-const path = 'lib/jobi';
-const Jobi = getModule( path );
-const formats = getModule('lib/formats');
+const path         = 'lib/jobi';
+
+const Jobi           = getModule( path );
+const formats        = getModule('lib/formats');
 const buildLogObject = getModule('lib/util/build-log-object');
-const levels = getModule('lib/levels');
+const levels         = getModule('lib/levels');
 
 // Shared Jobi settings symbols
 const sharedLogLevel  = Symbol.for('JOBI_sharedLogLevel');
@@ -95,6 +96,10 @@ describe( path, () => {
         expect( logger.format({ 'test': true }) ).to.equal('{"test":true}');
       });
 
+      it( 'should allow a custom prefix', () => {
+        new Jobi({ prefix: 'cognomen' });
+      });
+
       it( 'should set up correct defaults', () => {
         const logger = new Jobi();
         expect( logger.stdout ).to.deep.equal( process.stdout );
@@ -139,6 +144,18 @@ describe( path, () => {
       it( 'should throw on set', () => {
         const logger = new Jobi();
         assert.throws( () => logger.level = 'info' );
+      });
+    });
+
+    describe( 'prefix', () => {
+      it( 'should allow prefix to be read', () => {
+        const logger = new Jobi({ prefix: 'prefix' });
+        expect( logger.prefix ).to.equal('prefix');
+      });
+
+      it( 'should not allow prefix to be written', () => {
+        const logger = new Jobi({ prefix: 'prefix' });
+        assert.throws( () => logger.prefix = 'cognomen' );
       });
     });
 
@@ -284,6 +301,23 @@ describe( path, () => {
       const args = [ 1, 'two', null, { four: 5, six: [ 7, '8' ] } ];
       logger[ logWithFormat ]( 'info', format, ...args );
       const expected = buildLogObject( 'info', args );
+
+      expect( this.data ).to.equal( format( expected ) + '\n' );
+    });
+
+    it( 'should add prefix to log objects message prop', () => {
+      const logger = new Jobi({
+        ...this.opts,
+        prefix: 'prefix.'
+      });
+      Jobi.level = 'info';
+
+      const format = JSON.stringify;
+
+      const args = [ 1, 'two', null, { four: 5, six: [ 7, '8' ] } ];
+      logger[ logWithFormat ]( 'info', format, ...args );
+      const expected = buildLogObject( 'info', args );
+      expected.message = 'prefix.' + expected.message;
 
       expect( this.data ).to.equal( format( expected ) + '\n' );
     });
