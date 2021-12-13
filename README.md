@@ -188,5 +188,5 @@ const { Jobi } = require('@starryinternet/jobi');
 const prefix = 'logger: ';
 
 const logger = new Jobi({ prefix });
-logger.info('Hello world'); // "[2021-11-29T15:35:59.859Z] INFO: jobi: log message"
+logger.info('Hello world'); // "[2021-11-29T15:35:59.859Z] INFO: logger: log message"
 ```
